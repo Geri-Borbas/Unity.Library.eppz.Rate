@@ -18,6 +18,7 @@ Rate.OpenAppStoreRatingPage();
 > The plugin works with iOS 7.0. 8.0, 9.0, 10.0 and 11.0.
 
 
+
 ## License
 
 > Licensed under the [MIT license](http://en.wikipedia.org/wiki/MIT_License).
