@@ -36,13 +36,15 @@ namespace EPPZ.Rate.Plugin
 		{
 			string iOS_7 = ""
 				+"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews"
-				+"?id="+EPPZ.Rate.Rate.iOS_App_ID()
+				+"?id=<APP_ID>"
 				+"&type=Purple+Software"
 				+"&mt=8";
 
+			// string iOS_7 = "itms-apps://itunes.apple.com/app/id<APP_ID>";
+
 			string iOS_8 = ""
 				+"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews"
-				+"?id="+EPPZ.Rate.Rate.iOS_App_ID()
+				+"?id=<APP_ID>"
 				+"&type=Purple+Software"
 				+"&mt=8"
 				+"&onlyLatestVersion=true"
@@ -50,11 +52,27 @@ namespace EPPZ.Rate.Plugin
 				+"&sortOrdering=1";
 
 			string iOS_11 = ""
-				+"itms-apps://itunes.apple.com/us/app/id"+EPPZ.Rate.Rate.iOS_App_ID()
+				+"itms-apps://itunes.apple.com/us/app/id<APP_ID>"
 				+"?action=write-review"
 				+"&mt=8";
 
-			// TODO: Select / Open URL.
+			// Get iOS (major) version.
+			int version = int.Parse(UnityEngine.iOS.Device.systemVersion[0].ToString());
+
+			// Select URL.
+			string URL;
+			if (version <= 7)
+			{ URL = iOS_7; }
+			else if (version <= 8)
+			{ URL = iOS_8; }
+			else
+			{ URL = iOS_11; }
+
+			// Inject App ID.
+			URL.Replace("<APP_ID>", EPPZ.Rate.Rate.iOS_App_ID());
+
+			// Open.
+			Application.OpenURL(URL);
 		}
 
 	#endregion

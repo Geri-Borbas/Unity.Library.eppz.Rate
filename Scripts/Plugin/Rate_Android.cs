@@ -20,8 +20,22 @@ namespace EPPZ.Rate.Plugin
 		
 	#region Features
 
-		public override void RequestReviewIfAppropriate() { }
-		public override void OpenAppStoreRatingPage() { }
+		public override void RequestReviewIfAppropriate()
+		{
+			// TODO: Lookup / implement `requestReview` counterpart.
+		}
+
+		public override void OpenAppStoreRatingPage()
+		{	
+			// Select URL.
+			string URL = "https://play.google.com/store/apps/details?id=<APP_ID>";
+
+			// Inject App ID.
+			URL.Replace("<APP_ID>", EPPZ.Rate.Rate.Android_App_ID());
+
+			// Open.
+			Application.OpenURL(URL);
+		}
 
 	#endregion
 
