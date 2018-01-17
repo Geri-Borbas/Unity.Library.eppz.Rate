@@ -27,13 +27,16 @@ namespace EPPZ.Rate.Plugin
 
 		public override void OpenAppStoreRatingPage()
 		{	
+			Debug.Log("EPPZ.Rate.Plugin.Rate_Android.OpenAppStoreRatingPage()");
+
 			// Select URL.
-			string URL = "https://play.google.com/store/apps/details?id=<APP_ID>";
+			string URL = "https://play.google.com/store/apps/details?id={0}";
 
 			// Inject App ID.
-			URL.Replace("<APP_ID>", EPPZ.Rate.Rate.Android_App_ID());
+			URL = string.Format(URL, EPPZ.Rate.Rate.Android_App_ID());
 
 			// Open.
+			Debug.Log("Application.OpenURL(`"+URL+"`)");
 			Application.OpenURL(URL);
 		}
 

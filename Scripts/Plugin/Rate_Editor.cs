@@ -20,8 +20,22 @@ namespace EPPZ.Rate.Plugin
 
 	#region Features
 
-		public override void RequestReviewIfAppropriate() { }
-		public override void OpenAppStoreRatingPage() { }
+		public override void RequestReviewIfAppropriate()
+		{ }
+
+		public override void OpenAppStoreRatingPage()
+		{
+			Debug.Log("EPPZ.Rate.Plugin.Rate_Editor.OpenAppStoreRatingPage()");
+
+			string URL = "https://itunes.apple.com/us/app/id{0}";
+
+			// Inject App ID.
+			URL = string.Format(URL, EPPZ.Rate.Rate.iOS_App_ID());
+
+			// Open.
+			Debug.Log("Application.OpenURL(`"+URL+"`)");
+			Application.OpenURL(URL);
+		}
 
 	#endregion
 

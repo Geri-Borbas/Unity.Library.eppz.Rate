@@ -34,9 +34,11 @@ namespace EPPZ.Rate.Plugin
 
 		public override void OpenAppStoreRatingPage()
 		{
+			Debug.Log("EPPZ.Rate.Plugin.Rate_iOS.OpenAppStoreRatingPage()");
+
 			string iOS_7 = ""
 				+"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews"
-				+"?id=<APP_ID>"
+				+"?id={0}" // App ID
 				+"&type=Purple+Software"
 				+"&mt=8";
 
@@ -44,7 +46,7 @@ namespace EPPZ.Rate.Plugin
 
 			string iOS_8 = ""
 				+"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews"
-				+"?id=<APP_ID>"
+				+"?id={0}" // App ID
 				+"&type=Purple+Software"
 				+"&mt=8"
 				+"&onlyLatestVersion=true"
@@ -52,7 +54,7 @@ namespace EPPZ.Rate.Plugin
 				+"&sortOrdering=1";
 
 			string iOS_11 = ""
-				+"itms-apps://itunes.apple.com/us/app/id<APP_ID>"
+				+"itms-apps://itunes.apple.com/us/app/id{0}" // App ID
 				+"?action=write-review"
 				+"&mt=8";
 
@@ -69,9 +71,10 @@ namespace EPPZ.Rate.Plugin
 			{ URL = iOS_11; }
 
 			// Inject App ID.
-			URL.Replace("<APP_ID>", EPPZ.Rate.Rate.iOS_App_ID());
+			URL = string.Format(URL, EPPZ.Rate.Rate.iOS_App_ID());
 
 			// Open.
+			Debug.Log("Application.OpenURL(`"+URL+"`)");
 			Application.OpenURL(URL);
 		}
 
