@@ -1,6 +1,10 @@
 # eppz.Rate
 
 
+* 0.0.5
+
+	+ Fixed iOS version string issue
+
 * 0.0.4
 
 	+ Fixed some string issue

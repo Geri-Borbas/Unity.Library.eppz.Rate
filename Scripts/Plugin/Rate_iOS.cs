@@ -59,7 +59,9 @@ namespace EPPZ.Rate.Plugin
 				+"&mt=8";
 
 			// Get iOS (major) version.
-			int version = int.Parse(UnityEngine.iOS.Device.systemVersion[0].ToString());
+			string versionString = UnityEngine.iOS.Device.systemVersion;
+			string[] versionTokens = versionString.Split("."[0]);
+			int version = int.Parse(versionTokens[0]);
 
 			// Select URL.
 			string URL;
