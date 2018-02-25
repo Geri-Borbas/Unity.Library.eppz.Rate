@@ -1,6 +1,10 @@
 # eppz.Rate
 
 
+* 0.0.7
+
+	+ `RequestReviewAtEveryEvent()` now returns true if rate requested
+
 * 0.0.6
 
 	+ Added feature to detect TestFligh (Sandbox) environment

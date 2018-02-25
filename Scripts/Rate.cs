@@ -50,12 +50,13 @@ namespace EPPZ.Rate
 		public static string Android_App_ID()
 		{ return _instance._Android_App_ID; }
 
-		public static void RequestReviewAtEveryEvent(int frequency)
+		public static bool RequestReviewAtEveryEvent(int frequency)
 		{
 			_rateEventCount++; // Gets reset on every session
 			bool now = (_rateEventCount % frequency == 0);
 			if (now)
 			{ RequestReviewIfAppropriate(); }
+			return now;
 		}
 
 		public static void RequestReviewIfAppropriate()
