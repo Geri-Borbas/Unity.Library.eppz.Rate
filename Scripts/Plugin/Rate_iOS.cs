@@ -24,6 +24,9 @@ namespace EPPZ.Rate.Plugin
 		[DllImport ("__Internal")]
 		private static extern void EPPZ_Rate_RequestReviewIfAppropriate();
 
+		[DllImport ("__Internal")]
+		private static extern bool EPPZ_Rate_IsSandboxEnvironment();
+
 	#endregion
 
 
@@ -79,6 +82,9 @@ namespace EPPZ.Rate.Plugin
 			Debug.Log("Application.OpenURL(`"+URL+"`)");
 			Application.OpenURL(URL);
 		}
+
+		public override bool IsSandboxEnvironment()
+		{ return EPPZ_Rate_IsSandboxEnvironment(); }
 
 	#endregion
 

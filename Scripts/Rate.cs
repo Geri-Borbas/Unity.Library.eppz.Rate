@@ -39,6 +39,8 @@ namespace EPPZ.Rate
 		public string _iOS_App_ID;
 		public string _Android_App_ID;
 
+		static int _rateEventCount;
+
 
 	#region Features
 
@@ -48,11 +50,22 @@ namespace EPPZ.Rate
 		public static string Android_App_ID()
 		{ return _instance._Android_App_ID; }
 
+		public static void RequestReviewAtEveryEvent(int frequency)
+		{
+			_rateEventCount++; // Gets reset on every session
+			bool now = (_rateEventCount % frequency == 0);
+			if (now)
+			{ RequestReviewIfAppropriate(); }
+		}
+
 		public static void RequestReviewIfAppropriate()
 		{ _instance.plugin.RequestReviewIfAppropriate(); }
 
 		public static void OpenAppStoreRatingPage()
 		{ _instance.plugin.OpenAppStoreRatingPage(); }
+
+		public static bool IsSandboxEnvironment()
+		{ return _instance.plugin.IsSandboxEnvironment(); }
 
 	#endregion
 

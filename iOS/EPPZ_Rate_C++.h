@@ -11,6 +11,7 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
 
@@ -19,6 +20,7 @@ extern "C"
     
     
     void EPPZ_Rate_RequestReviewIfAppropriate();
+    bool EPPZ_Rate_IsSandboxEnvironment();
     
     
 }

@@ -47,6 +47,7 @@ namespace EPPZ.Rate.Plugin
 
 		public virtual void RequestReviewIfAppropriate() { }
 		public virtual void OpenAppStoreRatingPage() { }
+		public virtual bool IsSandboxEnvironment() { return false; }
 
 	#endregion
 	

@@ -24,5 +24,13 @@ extern "C"
         { [SKStoreReviewController requestReview]; }
     }
 
+    bool EPPZ_Rate_IsSandboxEnvironment()
+    {
+        NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+        NSString *receiptURLString = [receiptURL path];
+        BOOL isSandboxReceipt =  ([receiptURLString rangeOfString:@"sandboxReceipt"].location != NSNotFound);
+        return isSandboxReceipt;
+    }
+
     
 }
